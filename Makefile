@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-std=c99 -Wall -O3
+CFLAGS=-std=c99 -Wall -O3 -g
 
 shsh: shsh.c
 	$(CC) $(CFLAGS) shsh.c -o shsh
@@ -7,4 +7,5 @@ shsh: shsh.c
 .PHONY: clean
 clean:
 	rm shsh
+	rm -rf shsh.dSYM
 
