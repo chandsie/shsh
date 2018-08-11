@@ -116,15 +116,19 @@ int execute(char** args) {
 }
 
 int launch_proc(char** args) {
+    // fork off a new thread to execute the command
     pid_t pid = fork();
 
+    // an error ocurred
     if (pid < 0) {
         perror("shsh");
+    // this is the child thread
     } else if (pid == 0) {
         if (execvp(args[0], args) == -1) {
             perror("shsh");
         }
-     } else {
+    // this is the main thread
+    } else {
          int status;
          pid_t wpid;
          do {
